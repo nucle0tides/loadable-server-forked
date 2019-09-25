@@ -305,13 +305,17 @@ class ChunkExtractor {
 
   requireEntrypoint(entrypoint) {
     entrypoint = entrypoint || this.entrypoints[0]
+    console.log(entrypoint)
     const assets = this.getChunkAssets(entrypoint)
     const mainAsset = assets.find(asset => asset.scriptType === 'script')
     if (!mainAsset) throw new Error("main asset empty");
     invariant(mainAsset, 'asset not found')
 
+    console.log(assets);
+
     this.stats.assets
       .filter(({ name }) => {
+        if (!name) throw new Error("asset anme undefined");
         const type = extensionToScriptType(
           path
             .extname(name)
