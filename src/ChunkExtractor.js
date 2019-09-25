@@ -186,6 +186,8 @@ class ChunkExtractor {
 
   createChunkAsset({ filename, chunk, type, linkType }) {
     if (!filename) throw new Error("filename undefined");
+    console.log(filename);
+    console.log(path.extname(filename));
     return {
       filename,
       scriptType: extensionToScriptType(
